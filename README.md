@@ -2,6 +2,8 @@
 
 A clean, photography-first personal site for logging mountain trips, split across real pages: a homepage with a teaser of recent trips, a full trip reports overview, individual pages per report, and a standalone gallery.
 
+Every page has a full-bleed hero photo with a transparent nav floating on top of it (your name in serif, links, and social icons) — no solid nav bar, the photo carries it. This means the nav scrolls away once you scroll past a page's hero, by design, matching the reference look. If you'd rather it stay pinned while scrolling, that needs a small bit of JavaScript — just ask.
+
 ## Site structure
 
 ```
@@ -37,5 +39,9 @@ Drop files into `images/` and point any `src` at e.g. `images/my-photo.jpg` inst
 ## Editing shared bits (nav, footer, colors)
 
 All shared styling lives in `style.css` — change it once and it updates every page. The nav markup itself is repeated at the top of each HTML file (adjust `../` prefixes if you add pages inside `reports/`).
+
+## Social icons
+
+The three circular icons in the nav (Instagram, YouTube, email) currently point nowhere (`href="#"`) or to a placeholder email. Find them near the top of each HTML file inside `<div class="nav-social">` and swap in your real profile URLs / email address — there are 6 copies (one per page) to update.
 
 Enjoy logging your adventures! 🏔️
