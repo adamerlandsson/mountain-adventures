@@ -3,25 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Field Log — My Mountain Adventures</title>
-<meta name="description" content="A running field log of summits, trails, and the sky above them.">
+<title>Adam Erlandsson — Mountain Adventures</title>
+<meta name="description" content="A running log of summits, trails, and the sky above them.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
     /* ---------- Tokens ---------- */
     :root{
-        --ink:       #101c24;   /* alpine night */
-        --ink-soft:  #1c2e3a;   /* raised surface on dark */
-        --paper:     #f1ece1;   /* topo paper */
-        --paper-2:   #fbf9f4;   /* photo mat / card */
-        --ice:       #6fc9dc;   /* glacier accent — dark bg */
-        --ember:     #ff6a3d;   /* trail-blaze accent — dark bg / fills */
-        --rust:      #b8431d;   /* warm accent — safe on paper */
-        --moss:      #48602f;  /* cool-green accent — safe on paper */
-        --ridge:     #4c6274;   /* neutral secondary text on paper */
-        --line:      rgba(16,28,36,0.12);
-        --maxw:      1040px;
+        --paper:     #faf8f4;   /* page background */
+        --ink:       #171f24;   /* headings / body */
+        --muted:     #63707a;   /* meta text, secondary */
+        --line:      rgba(23,31,36,0.10);
+        --accent:    #c25a2e;   /* single accent — links, hover, active state */
+        --maxw:      1120px;    /* image width */
+        --textw:     640px;     /* reading width */
     }
 
     *{ margin:0; padding:0; box-sizing:border-box; }
@@ -37,324 +33,287 @@
 
     img{ max-width:100%; display:block; }
 
-    .mono{
-        font-family:'JetBrains Mono',ui-monospace,monospace;
+    section{ scroll-margin-top:84px; }
+
+    .display{
+        font-family:'Big Shoulders Display',sans-serif;
+        font-weight:800;
+        text-transform:uppercase;
+        letter-spacing:-0.01em;
     }
 
-    .eyebrow{
-        font-family:'JetBrains Mono',ui-monospace,monospace;
-        font-size:0.72rem;
-        letter-spacing:0.16em;
-        text-transform:uppercase;
+    a{ color:inherit; }
+
+    /* ---------- Nav ---------- */
+    .nav{
+        position:sticky;
+        top:0;
+        z-index:20;
+        background:rgba(250,248,244,0.92);
+        backdrop-filter:blur(8px);
+        -webkit-backdrop-filter:blur(8px);
+        border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+        max-width:var(--maxw);
+        margin:0 auto;
+        padding:20px 28px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:20px;
+        flex-wrap:wrap;
+    }
+    .nav-name{
         font-weight:600;
+        font-size:0.98rem;
+        letter-spacing:-0.01em;
+        text-decoration:none;
+    }
+    .nav-links{
+        list-style:none;
+        display:flex;
+        gap:32px;
+    }
+    .nav-links a{
+        text-decoration:none;
+        font-size:0.86rem;
+        font-weight:500;
+        color:var(--muted);
+        padding-bottom:3px;
+        border-bottom:1px solid transparent;
+        transition:color .2s ease, border-color .2s ease;
+    }
+    .nav-links a:hover{ color:var(--ink); border-color:var(--accent); }
+
+    @media (max-width:480px){
+        .nav-inner{ justify-content:center; text-align:center; }
+        .nav-links{ gap:20px; }
     }
 
     /* ---------- Hero ---------- */
     .hero{
-        background:var(--ink);
-        color:var(--paper);
         position:relative;
+        height:min(86vh, 780px);
+        min-height:440px;
         overflow:hidden;
-        padding:28px 24px 0;
     }
-
-    .hero-nav{
-        max-width:var(--maxw);
-        margin:0 auto;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        gap:16px;
-        flex-wrap:wrap;
-        color:var(--ice);
-        opacity:0.85;
-    }
-
-    .hero-inner{
-        max-width:var(--maxw);
-        margin:0 auto;
-        padding:96px 0 0;
-        text-align:center;
-    }
-
-    .hero-inner .eyebrow{
-        color:var(--ember);
-        display:block;
-        margin-bottom:22px;
-    }
-
-    .hero h1{
-        font-family:'Big Shoulders Display',sans-serif;
-        font-weight:900;
-        text-transform:uppercase;
-        letter-spacing:-0.01em;
-        line-height:0.86;
-        font-size:clamp(3.2rem, 11vw, 7.5rem);
-    }
-
-    .hero h1 span{ display:block; }
-    .hero h1 .of{ color:var(--ice); }
-
-    .hero-sub{
-        max-width:520px;
-        margin:26px auto 0;
-        font-size:1.05rem;
-        line-height:1.65;
-        color:rgba(241,236,225,0.75);
-    }
-
-    /* elevation-profile signature line */
-    .skyline{
-        display:block;
+    .hero img{
         width:100%;
-        height:auto;
-        margin-top:56px;
+        height:100%;
+        object-fit:cover;
     }
-    .skyline path.fill{ fill:url(#skylineFill); }
-    .skyline path.line{
-        fill:none;
-        stroke:url(#skylineStroke);
-        stroke-width:2.5;
-        stroke-linejoin:round;
-        stroke-linecap:round;
-        pathLength:1;
+    .hero::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:linear-gradient(to top, rgba(10,14,17,0.72) 0%, rgba(10,14,17,0.15) 45%, rgba(10,14,17,0) 65%);
     }
-    @media (prefers-reduced-motion:no-preference){
-        .skyline path.line{
-            stroke-dasharray:1;
-            stroke-dashoffset:1;
-            animation:draw 2.1s cubic-bezier(.22,.8,.28,1) 0.15s forwards;
-        }
-    }
-    @keyframes draw{ to{ stroke-dashoffset:0; } }
-
-    /* ---------- Entries section ---------- */
-    .log{
+    .hero-text{
+        position:absolute;
+        left:0; right:0; bottom:0;
         max-width:var(--maxw);
         margin:0 auto;
-        padding:88px 24px 40px;
+        padding:0 28px 56px;
+        color:#fff;
     }
-
-    .log-head{
-        display:flex;
-        justify-content:space-between;
-        align-items:flex-end;
-        border-bottom:1px solid var(--line);
-        padding-bottom:18px;
-        margin-bottom:64px;
-        gap:16px;
-        flex-wrap:wrap;
-    }
-    .log-head .eyebrow{ color:var(--rust); }
-    .log-head .count{ color:var(--ridge); }
-
-    .entry{
-        display:grid;
-        grid-template-columns:1fr;
-        gap:32px;
-        align-items:center;
-        padding:48px 0;
-    }
-    .entry + .entry{ border-top:1px solid var(--line); }
-
-    @media (min-width:900px){
-        .entry{ grid-template-columns:1.05fr 1fr; gap:56px; }
-        .entry.flip .entry-media{ order:2; }
-        .entry.flip .entry-body{ order:1; }
-    }
-
-    .entry-num{
-        color:var(--ember);
-        background:var(--ink);
-        display:inline-block;
-        padding:3px 9px;
-        border-radius:3px;
-        margin-bottom:14px;
-    }
-
-    .entry h2{
-        font-family:'Big Shoulders Display',sans-serif;
-        font-weight:800;
-        text-transform:uppercase;
-        letter-spacing:-0.005em;
-        line-height:0.95;
-        font-size:clamp(1.9rem, 3.4vw, 2.6rem);
-        margin-bottom:18px;
-    }
-
-    .stat-strip{
-        display:flex;
-        flex-wrap:wrap;
-        gap:18px;
-        row-gap:8px;
-        margin-bottom:22px;
-        padding-bottom:20px;
-        border-bottom:1px dashed var(--line);
-    }
-    .stat{ line-height:1.2; }
-    .stat .k{
+    .hero-text .eyebrow{
         display:block;
-        font-size:0.66rem;
-        letter-spacing:0.12em;
+        font-size:0.8rem;
+        letter-spacing:0.08em;
         text-transform:uppercase;
-        color:var(--ridge);
-        margin-bottom:3px;
-    }
-    .stat .v{
-        font-family:'JetBrains Mono',ui-monospace,monospace;
-        font-weight:600;
-        font-size:0.92rem;
-    }
-    .stat.elev .v{ color:var(--rust); }
-    .stat.dist .v{ color:var(--moss); }
-
-    .entry p{
-        line-height:1.75;
-        color:#33424c;
-        font-size:1.02rem;
+        color:rgba(255,255,255,0.75);
         margin-bottom:14px;
-        max-width:52ch;
     }
-    .entry p:last-of-type{ margin-bottom:0; }
-
-    .entry-media{
-        background:var(--paper-2);
-        padding:10px 10px 34px;
-        box-shadow:0 10px 30px -12px rgba(16,28,36,0.35), 0 1px 0 var(--line);
-        transform:rotate(-1deg);
-        transition:transform .35s ease, box-shadow .35s ease;
+    .hero-text h1{
+        font-size:clamp(2.4rem, 6.4vw, 4.6rem);
+        line-height:0.98;
+        margin-bottom:14px;
     }
-    .entry:nth-child(even) .entry-media{ transform:rotate(1deg); }
-    .entry-media:hover{
-        transform:rotate(0deg) translateY(-3px);
-        box-shadow:0 16px 36px -12px rgba(16,28,36,0.4), 0 1px 0 var(--line);
-    }
-    .entry-media img{ width:100%; height:auto; }
-    .entry-media figcaption{
-        font-family:'JetBrains Mono',ui-monospace,monospace;
-        font-size:0.68rem;
-        letter-spacing:0.06em;
-        text-transform:uppercase;
-        color:var(--ridge);
-        text-align:center;
-        padding-top:12px;
+    .hero-text p{
+        max-width:480px;
+        font-size:1.02rem;
+        line-height:1.6;
+        color:rgba(255,255,255,0.85);
     }
 
-    /* mini divider skyline between entries — decorative rhythm marker */
-    .mini-divider{
+    /* quiet signature — thin elevation line, not the star of the show */
+    .divider{
         display:flex;
         justify-content:center;
-        margin:4px 0;
-        opacity:0.5;
+        padding:40px 0 8px;
+        opacity:0.55;
     }
-    .mini-divider svg{ width:120px; height:20px; }
-    .mini-divider path{ fill:none; stroke:var(--ridge); stroke-width:1.5; stroke-linejoin:round; }
+    .divider svg{ width:130px; height:18px; }
+    .divider path{ fill:none; stroke:var(--muted); stroke-width:1.4; stroke-linejoin:round; }
+
+    /* ---------- Section headers ---------- */
+    .section-head{
+        max-width:var(--maxw);
+        margin:0 auto;
+        padding:0 28px;
+        text-align:center;
+        margin-bottom:56px;
+    }
+    .section-head h2{
+        font-size:clamp(1.9rem, 4vw, 2.6rem);
+        margin-bottom:10px;
+    }
+    .section-head p{ color:var(--muted); font-size:0.98rem; }
+
+    /* ---------- Trip reports ---------- */
+    .reports{ padding:96px 0 40px; }
+
+    .report{
+        max-width:var(--maxw);
+        margin:0 auto;
+        padding:0 28px;
+    }
+    .report + .report{ margin-top:104px; }
+
+    .report-photo{
+        overflow:hidden;
+        border-radius:2px;
+        margin-bottom:32px;
+    }
+    .report-photo img{
+        width:100%;
+        aspect-ratio:16/10;
+        object-fit:cover;
+        transition:transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    .report-photo:hover img{ transform:scale(1.035); }
+
+    .report-text{
+        max-width:var(--textw);
+        margin:0 auto;
+    }
+    .report-text h3{
+        font-size:clamp(1.5rem, 2.6vw, 1.9rem);
+        margin-bottom:10px;
+    }
+    .report-meta{
+        color:var(--accent);
+        font-size:0.86rem;
+        font-weight:500;
+        margin-bottom:20px;
+    }
+    .report-text p{
+        line-height:1.75;
+        color:#3a444b;
+        font-size:1.02rem;
+        margin-bottom:16px;
+    }
+    .report-text p:last-child{ margin-bottom:0; }
+
+    /* ---------- Gallery ---------- */
+    .gallery-section{ padding:96px 0; }
+    .gallery{
+        max-width:var(--maxw);
+        margin:0 auto;
+        padding:0 28px;
+        display:grid;
+        grid-template-columns:repeat(2, 1fr);
+        gap:20px;
+    }
+    .gallery a{
+        display:block;
+        overflow:hidden;
+        border-radius:2px;
+    }
+    .gallery img{
+        width:100%;
+        aspect-ratio:4/5;
+        object-fit:cover;
+        transition:transform .6s cubic-bezier(.2,.7,.2,1);
+    }
+    .gallery a:hover img{ transform:scale(1.045); }
+    .gallery a:first-child{ grid-column:1 / -1; }
+    .gallery a:first-child img{ aspect-ratio:16/9; }
+
+    @media (max-width:680px){
+        .gallery{ grid-template-columns:1fr; }
+        .gallery a:first-child img{ aspect-ratio:4/5; }
+    }
 
     /* ---------- Footer ---------- */
     footer{
-        background:var(--ink);
-        color:rgba(241,236,225,0.7);
-        padding:64px 24px 48px;
-        margin-top:40px;
+        border-top:1px solid var(--line);
+        padding:40px 28px 56px;
     }
     .foot-inner{
         max-width:var(--maxw);
         margin:0 auto;
-        text-align:center;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:16px;
+        flex-wrap:wrap;
+        color:var(--muted);
+        font-size:0.86rem;
     }
-    footer .wordmark{
-        font-family:'Big Shoulders Display',sans-serif;
-        font-weight:900;
-        text-transform:uppercase;
-        letter-spacing:0.02em;
-        font-size:1.4rem;
-        color:var(--paper);
-        margin-bottom:10px;
-    }
-    footer .tagline{ font-size:0.9rem; margin-bottom:28px; }
-    footer .top-link{
-        font-family:'JetBrains Mono',ui-monospace,monospace;
-        font-size:0.72rem;
-        letter-spacing:0.1em;
-        text-transform:uppercase;
-        color:var(--ice);
+    footer a{
         text-decoration:none;
-        border:1px solid rgba(111,201,220,0.35);
-        padding:9px 16px;
-        border-radius:3px;
-        transition:background .2s ease, color .2s ease;
+        color:var(--muted);
+        transition:color .2s ease;
     }
-    footer .top-link:hover{ background:var(--ice); color:var(--ink); }
+    footer a:hover{ color:var(--accent); }
 </style>
 </head>
 <body>
 
 <!-- ============================================================
-     HERO — edit the two h1 lines + the sub-line to retitle the log.
+     NAV — edit your name and the section labels here if needed.
+     Links point at the section ids below (#trip-reports, #gallery).
      ============================================================ -->
-<header class="hero" id="top">
-    <nav class="hero-nav">
-        <span class="eyebrow">Field&nbsp;Log</span>
-        <span class="eyebrow mono">Est. 2026 · A. Erlandsson</span>
-    </nav>
-
-    <div class="hero-inner">
-        <span class="eyebrow">A personal expedition journal</span>
-        <h1><span>My Mountain</span><span class="of">Adventures</span></h1>
-        <p class="hero-sub">
-            A running field log of summits, trails, and the sky above them —
-            logged one climb at a time, straight from the trailhead.
-        </p>
+<nav class="nav">
+    <div class="nav-inner">
+        <a class="nav-name" href="#top">Adam Erlandsson</a>
+        <ul class="nav-links">
+            <li><a href="#top">Home</a></li>
+            <li><a href="#trip-reports">Trip reports</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
     </div>
-
-    <!-- signature element: elevation profile that reads as both a mountain skyline and a data line -->
-    <svg class="skyline" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-            <linearGradient id="skylineFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#6fc9dc" stop-opacity="0.22"/>
-                <stop offset="100%" stop-color="#6fc9dc" stop-opacity="0"/>
-            </linearGradient>
-            <linearGradient id="skylineStroke" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#6fc9dc"/>
-                <stop offset="55%" stop-color="#ff6a3d"/>
-                <stop offset="100%" stop-color="#6fc9dc"/>
-            </linearGradient>
-        </defs>
-        <path class="fill" d="M0,220 L0,150 L90,95 L160,140 L230,60 L300,120 L360,40 L420,110 L520,20 L600,100 L680,55 L760,130 L860,70 L940,150 L1020,90 L1120,160 L1200,110 L1200,220 Z"/>
-        <path class="line" d="M0,150 L90,95 L160,140 L230,60 L300,120 L360,40 L420,110 L520,20 L600,100 L680,55 L760,130 L860,70 L940,150 L1020,90 L1120,160 L1200,110"/>
-    </svg>
-</header>
+</nav>
 
 <!-- ============================================================
-     ENTRIES — to log a new adventure, duplicate one <article class="entry">
-     block (including the mini-divider before it) and fill in:
-       - the ENTRY number badge
-       - the title (h2)
-       - the four stats: date / elevation gain / distance / rating
-       - the image src + alt + figcaption
-       - the story paragraph(s)
-     Add class="flip" to alternate the image to the right on wide screens.
+     HERO — swap the image src and edit the two lines of text.
      ============================================================ -->
-<main class="log">
-    <div class="log-head">
-        <span class="eyebrow">Field Entries</span>
-        <span class="eyebrow count">03 Logged</span>
+<header class="hero" id="top">
+    <img src="https://picsum.photos/1800/1400?random=10" alt="Mountain ridge at sunrise">
+    <div class="hero-text">
+        <span class="eyebrow">A personal expedition journal</span>
+        <h1 class="display">My Mountain Adventures</h1>
+        <p>A running log of summits, trails, and the sky above them — logged one climb at a time.</p>
+    </div>
+</header>
+
+<div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 130 18"><path d="M0,14 L22,7 L37,13 L54,3 L72,11 L91,5 L108,14 L130,8"/></svg>
+</div>
+
+<!-- ============================================================
+     TRIP REPORTS — to log a new adventure, duplicate one
+     <article class="report"> block and fill in:
+       - the photo src + alt
+       - the title (h3)
+       - the meta line (date · distance · elevation gain)
+       - the story paragraph(s)
+     ============================================================ -->
+<section class="reports" id="trip-reports">
+    <div class="section-head">
+        <h2 class="display">Trip Reports</h2>
+        <p>Three trips, logged chronologically.</p>
     </div>
 
-    <article class="entry">
-        <div class="entry-media">
-            <img src="https://picsum.photos/700/860?random=1" alt="Mountain peak at sunrise" loading="lazy">
-            <figcaption>Fig. 01 — Sunrise from the summit ridge</figcaption>
+    <article class="report">
+        <div class="report-photo">
+            <img src="https://picsum.photos/1400/875?random=1" alt="Mountain peak at sunrise" loading="lazy">
         </div>
-        <div class="entry-body">
-            <span class="entry-num mono">Entry 01</span>
-            <h2>Summit of the Misty Peak</h2>
-            <div class="stat-strip">
-                <div class="stat"><span class="k">Date</span><span class="v">08.03.2026</span></div>
-                <div class="stat elev"><span class="k">Elev. gain</span><span class="v">+1,240 m</span></div>
-                <div class="stat dist"><span class="k">Distance</span><span class="v">14.2 km</span></div>
-                <div class="stat"><span class="k">Rating</span><span class="v">★★★★☆</span></div>
-            </div>
+        <div class="report-text">
+            <h3>Summit of the Misty Peak</h3>
+            <p class="report-meta">August 3, 2026 · 14.2 km · +1,240 m gain</p>
             <p>
                 Today was unforgettable. We woke up at 4&nbsp;AM and started the climb while the stars were
                 still out. The last 500&nbsp;metres were the hardest — thin air, steep switchbacks, legs
@@ -366,24 +325,13 @@
         </div>
     </article>
 
-    <div class="mini-divider" aria-hidden="true">
-        <svg viewBox="0 0 120 20"><path d="M0,16 L20,8 L34,14 L50,4 L66,12 L84,6 L100,15 L120,9"/></svg>
-    </div>
-
-    <article class="entry flip">
-        <div class="entry-media">
-            <img src="https://picsum.photos/700/860?random=2" alt="Dense forest trail through old-growth pines" loading="lazy">
-            <figcaption>Fig. 02 — The unmarked trail past Eagle Lake</figcaption>
+    <article class="report">
+        <div class="report-photo">
+            <img src="https://picsum.photos/1400/875?random=2" alt="Dense forest trail through old-growth pines" loading="lazy">
         </div>
-        <div class="entry-body">
-            <span class="entry-num mono">Entry 02</span>
-            <h2>Forest Trail Discovery</h2>
-            <div class="stat-strip">
-                <div class="stat"><span class="k">Date</span><span class="v">07.28.2026</span></div>
-                <div class="stat elev"><span class="k">Elev. gain</span><span class="v">+410 m</span></div>
-                <div class="stat dist"><span class="k">Distance</span><span class="v">9.6 km</span></div>
-                <div class="stat"><span class="k">Rating</span><span class="v">★★★☆☆</span></div>
-            </div>
+        <div class="report-text">
+            <h3>Forest Trail Discovery</h3>
+            <p class="report-meta">July 28, 2026 · 9.6 km · +410 m gain</p>
             <p>
                 Found a hidden trail today while poking around the backcountry near Eagle Lake — old-growth
                 pines, and clearings that suddenly open onto the water. A family of deer was grazing at the
@@ -396,24 +344,13 @@
         </div>
     </article>
 
-    <div class="mini-divider" aria-hidden="true">
-        <svg viewBox="0 0 120 20"><path d="M0,16 L20,8 L34,14 L50,4 L66,12 L84,6 L100,15 L120,9"/></svg>
-    </div>
-
-    <article class="entry">
-        <div class="entry-media">
-            <img src="https://picsum.photos/700/860?random=3" alt="Alpine lake at dusk with mountains reflected in the water" loading="lazy">
-            <figcaption>Fig. 03 — Camp above the alpine lake, dusk</figcaption>
+    <article class="report">
+        <div class="report-photo">
+            <img src="https://picsum.photos/1400/875?random=3" alt="Alpine lake at dusk with mountains reflected in the water" loading="lazy">
         </div>
-        <div class="entry-body">
-            <span class="entry-num mono">Entry 03</span>
-            <h2>Alpine Lake Camping</h2>
-            <div class="stat-strip">
-                <div class="stat"><span class="k">Date</span><span class="v">07.15.2026</span></div>
-                <div class="stat elev"><span class="k">Elev. gain</span><span class="v">+890 m</span></div>
-                <div class="stat dist"><span class="k">Distance</span><span class="v">3 days</span></div>
-                <div class="stat"><span class="k">Rating</span><span class="v">★★★★★</span></div>
-            </div>
+        <div class="report-text">
+            <h3>Alpine Lake Camping</h3>
+            <p class="report-meta">July 15, 2026 · 3 days · +890 m gain</p>
             <p>
                 Three days out to the alpine lake was exactly what I needed. The water is impossibly clear —
                 you can see straight to the bottom, even in the deepest parts. We camped on a ridge above
@@ -425,13 +362,41 @@
             </p>
         </div>
     </article>
-</main>
+</section>
+
+<!-- ============================================================
+     GALLERY — a grid for standalone shots that don't need a full
+     trip report. Add more <a><img></a> pairs to grow the grid;
+     the first image in the grid automatically spans full width.
+     ============================================================ -->
+<section class="gallery-section" id="gallery">
+    <div class="section-head">
+        <h2 class="display">Gallery</h2>
+        <p>Moments that didn't need a whole story.</p>
+    </div>
+    <div class="gallery">
+        <a href="https://picsum.photos/1800/1000?random=20" target="_blank" rel="noopener">
+            <img src="https://picsum.photos/1800/1000?random=20" alt="Wide mountain valley view" loading="lazy">
+        </a>
+        <a href="https://picsum.photos/900/1125?random=21" target="_blank" rel="noopener">
+            <img src="https://picsum.photos/900/1125?random=21" alt="Trail winding through rocks" loading="lazy">
+        </a>
+        <a href="https://picsum.photos/900/1125?random=22" target="_blank" rel="noopener">
+            <img src="https://picsum.photos/900/1125?random=22" alt="Campsite at dusk" loading="lazy">
+        </a>
+        <a href="https://picsum.photos/900/1125?random=23" target="_blank" rel="noopener">
+            <img src="https://picsum.photos/900/1125?random=23" alt="Close-up of alpine wildflowers" loading="lazy">
+        </a>
+        <a href="https://picsum.photos/900/1125?random=24" target="_blank" rel="noopener">
+            <img src="https://picsum.photos/900/1125?random=24" alt="Snow-capped summit against blue sky" loading="lazy">
+        </a>
+    </div>
+</section>
 
 <footer>
     <div class="foot-inner">
-        <div class="wordmark">Field Log</div>
-        <p class="tagline">Built for wandering — updated after every trip.</p>
-        <a class="top-link" href="#top">Back to the summit ↑</a>
+        <span>© 2026 Adam Erlandsson</span>
+        <a href="#top">Back to top ↑</a>
     </div>
 </footer>
 
