@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Mountain Adventures</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .post {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .post-date {
+            color: #667eea;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .post h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .post-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: block;
+        }
+
+        .post p {
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+
+        .post p:last-child {
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏔️ My Mountain Adventures</h1>
+            <p>Exploring peaks, trails, and the beauty of nature</p>
+        </header>
+
+        <!-- BLOG POST TEMPLATE: Duplicate this entire .post div to add a new adventure! -->
+        <article class="post">
+            <div class="post-date">August 3, 2026</div>
+            <h2>Summit of the Misty Peak</h2>
+            <img src="https://picsum.photos/700/400?random=1" alt="Mountain peak at sunrise" class="post-image">
+            <p>
+                Today was unforgettable. We woke up at 4 AM and started our hike while the stars were still visible above.
+                The climb was challenging, especially the last 500 meters with thin air and steep switchbacks. But when we
+                reached the summit just as the sun was rising, all the effort melted away. The view was breathtaking — endless
+                ridges stretching out in every direction, and the valley below completely shrouded in mist.
+            </p>
+            <p>
+                We spent an hour at the top eating energy bars and soaking in the moment. Worth every drop of sweat.
+            </p>
+        </article>
+
+        <article class="post">
+            <div class="post-date">July 28, 2026</div>
+            <h2>Forest Trail Discovery</h2>
+            <img src="https://picsum.photos/700/400?random=2" alt="Dense forest trail" class="post-image">
+            <p>
+                Found a hidden trail today while exploring the backcountry near Eagle Lake. It winds through old-growth
+                forest with towering pines and the occasional clearings that reveal stunning lake views. We saw a family
+                of deer grazing near the water and heard the distant call of an eagle.
+            </p>
+            <p>
+                This trail doesn't seem to get much traffic — fallen logs across the path and minimal signage — but it's
+                absolutely worth the extra scrambling. Definitely coming back here next month.
+            </p>
+        </article>
+
+        <article class="post">
+            <div class="post-date">July 15, 2026</div>
+            <h2>Alpine Lake Camping</h2>
+            <img src="https://picsum.photos/700/400?random=3" alt="Alpine lake at dusk" class="post-image">
+            <p>
+                Three-day backpacking trip to the alpine lake was exactly what I needed. The water is impossibly clear —
+                you can see straight to the bottom even in the deepest spots. We set up camp on a small ridge overlooking
+                the lake and spent the evening watching the light change as the sun moved behind the western peaks.
+            </p>
+            <p>
+                The sunrise the next morning was even better. Woke up to find mist rising off the water and a golden glow
+                lighting up the granite cliffs. These moments remind me why I love the mountains so much.
+            </p>
+        </article>
+
+        <footer>
+            <p>Built with ❤️ for the mountains | Updated regularly with new adventures</p>
+        </footer>
+    </div>
+</body>
+</html>
