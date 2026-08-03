@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adam Erlandsson — Mountain Adventures</title>
-<meta name="description" content="A running log of summits, trails, and the sky above them.">
+<title>Trip Reports — Adam Erlandsson</title>
+<meta name="description" content="All logged mountain adventures, most recent first.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,46 +12,27 @@
 </head>
 <body>
 
-<!-- ============================================================
-     NAV — appears on every page. Edit your name / links here,
-     and copy this block (adjusting hrefs) onto any new page you add.
-     ============================================================ -->
 <nav class="nav" id="top">
     <div class="nav-inner">
         <a class="nav-name" href="index.html">Adam Erlandsson</a>
         <ul class="nav-links">
-            <li><a href="index.html" class="is-active">Home</a></li>
-            <li><a href="trip-reports.html">Trip reports</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trip-reports.html" class="is-active">Trip reports</a></li>
             <li><a href="gallery.html">Gallery</a></li>
         </ul>
     </div>
 </nav>
 
 <!-- ============================================================
-     HERO — swap the image src and edit the two lines of text.
+     ALL TRIP REPORTS — to add a new one: 1) create
+     reports/your-slug.html (duplicate an existing report page),
+     2) add a matching card below, 3) optionally add it to the
+     "Latest Trip Reports" teaser on index.html too.
      ============================================================ -->
-<header class="hero">
-    <img src="https://picsum.photos/1800/1400?random=10" alt="Mountain ridge at sunrise">
-    <div class="hero-text">
-        <span class="eyebrow">A personal expedition journal</span>
-        <h1 class="display">My Mountain Adventures</h1>
-        <p>A running log of summits, trails, and the sky above them — logged one climb at a time.</p>
-    </div>
-</header>
-
-<div class="divider" aria-hidden="true">
-    <svg viewBox="0 0 130 18"><path d="M0,14 L22,7 L37,13 L54,3 L72,11 L91,5 L108,14 L130,8"/></svg>
-</div>
-
-<!-- ============================================================
-     LATEST TRIP REPORTS — a teaser of recent posts. To add a new
-     trip: 1) create reports/your-slug.html (copy an existing report
-     page), 2) add a matching card here AND in trip-reports.html.
-     ============================================================ -->
-<section class="page-section" id="trip-reports">
+<section class="page-section" style="padding-top:64px;">
     <div class="section-head">
-        <h2 class="display">Latest Trip Reports</h2>
-        <p>Click a report to read the full story.</p>
+        <h2 class="display">Trip Reports</h2>
+        <p>Every logged adventure, most recent first.</p>
     </div>
 
     <div class="report-grid">
@@ -78,10 +59,6 @@
             <h3>Alpine Lake Camping</h3>
             <p class="card-meta">July 15, 2026 · 3 days · +890 m gain</p>
         </a>
-    </div>
-
-    <div class="section-cta">
-        <a href="trip-reports.html">View all trip reports →</a>
     </div>
 </section>
 

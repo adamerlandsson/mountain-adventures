@@ -1,25 +1,41 @@
 # Mountain Adventures — Adam Erlandsson
 
-A clean, photography-first personal site for logging mountain trips: full-bleed hero, trip reports with big photos, and a standalone gallery for one-off shots.
+A clean, photography-first personal site for logging mountain trips, split across real pages: a homepage with a teaser of recent trips, a full trip reports overview, individual pages per report, and a standalone gallery.
 
-## How to use
+## Site structure
 
-1. Open `index.html` in your browser to view the site
-2. **Nav**: your name and the three section links live in `<nav class="nav">` at the top — edit the name text or link labels there
-3. **Trip reports**: to log a new adventure, duplicate one `<article class="report">` block under `id="trip-reports"` and fill in:
-   - The photo `src` and `alt`
-   - The title (`<h3>`)
-   - The meta line (`.report-meta`): date · distance · elevation gain
-   - Your story paragraph(s)
-4. **Gallery**: to add a standalone photo, duplicate one `<a><img></a>` pair inside `.gallery` under `id="gallery"` — the first image in the grid always spans full width, the rest tile two-up
-5. To use your own photos, drop them in the `images/` folder and point `src` at e.g. `images/my-photo.jpg` instead of the placeholder URL
+```
+index.html              Home — hero + latest trip report cards
+trip-reports.html        Overview — every trip report as a card
+gallery.html              Standalone photo grid
+reports/
+  misty-peak.html         Individual trip report
+  forest-trail.html        Individual trip report
+  alpine-lake.html          Individual trip report
+style.css                 Shared styles for every page
+images/                    Drop your own photos here
+```
 
-## Features
+## How to add a new trip report
 
-- Clean, light, photography-first layout inspired by editorial adventure blogs — one accent color, generous whitespace, big images
-- Sticky nav with your name and Home / Trip reports / Gallery links
-- Full-bleed hero photo with overlaid title
-- Subtle zoom-on-hover on photos, no heavy effects
-- Fully responsive, no build tools, no dependencies beyond Google Fonts
+1. Duplicate `reports/misty-peak.html` as `reports/your-trip-slug.html` and edit:
+   - The hero image `src` + `alt`
+   - The title (`<h1>`) and meta line (date · distance · elevation gain)
+   - The story paragraph(s) in `<main class="report-detail">`
+   - The `.report-nav` links at the bottom to point at your actual neighboring reports
+2. Add a matching card (image, title, meta line, link) to the `.report-grid` in `trip-reports.html`
+3. Optionally add the same card to the teaser on `index.html` if it's one of your latest trips
+
+## How to add a gallery photo
+
+Duplicate an `<a><img></a>` pair inside `.gallery` in `gallery.html`. The first image in the grid always spans full width; the rest tile two-up.
+
+## Using your own photos
+
+Drop files into `images/` and point any `src` at e.g. `images/my-photo.jpg` instead of the placeholder URL.
+
+## Editing shared bits (nav, footer, colors)
+
+All shared styling lives in `style.css` — change it once and it updates every page. The nav markup itself is repeated at the top of each HTML file (adjust `../` prefixes if you add pages inside `reports/`).
 
 Enjoy logging your adventures! 🏔️
