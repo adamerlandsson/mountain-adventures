@@ -2,78 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gallery — Adam Erlandsson</title>
 <meta name="description" content="Moments from the mountains that didn't need a whole story.">
+
+<meta property="og:title" content="Gallery — Adam Erlandsson">
+<meta property="og:description" content="Moments from the mountains that didn't need a whole story.">
+<meta property="og:image" content="images/summit-celebration.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#faf8f5">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314181b'/%3E%3Cpath d='M4 25 L12.5 9 L17 17.5 L20.5 11 L28 25 Z' fill='%23faf8f5'/%3E%3Cpath d='M12.5 9 L15.2 14 L9.8 14 Z' fill='%23c25a2e'/%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="gallery">
 
-<nav class="nav" id="top">
-    <div class="nav-inner">
-        <a class="nav-name" href="index.html">Adam Erlandsson</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="trip-reports.html">Trip reports</a></li>
-            <li><a href="gallery.html" class="is-active">Gallery</a></li>
-        </ul>
-        <div class="nav-social">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1"/></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 7.5v9l8-4.5-8-4.5z"/></svg></a>
-            <a href="mailto:you@example.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></a>
-        </div>
-    </div>
-</nav>
+<noscript>
+  <div class="noscript">This site needs JavaScript switched on to show the photos and reports.</div>
+</noscript>
 
-<header class="hero hero--sub has-caption">
-    <img src="https://picsum.photos/1800/1000?random=24" alt="Snow-capped summit against blue sky">
-    <div class="hero-text">
-        <span class="eyebrow">In between the stories</span>
-        <h1 class="display">Gallery</h1>
-        <p>Moments that didn't need a whole story.</p>
-    </div>
-</header>
-
-<!-- ============================================================
-     GALLERY — for standalone shots that don't need a full report.
-     Add more <a><img></a> pairs to grow the grid; the first image
-     always spans full width, the rest tile two-up.
-     ============================================================ -->
-<section class="page-section">
-    <div class="gallery">
-        <a href="https://picsum.photos/1800/1000?random=20" target="_blank" rel="noopener">
-            <img src="https://picsum.photos/1800/1000?random=20" alt="Wide mountain valley view" loading="lazy">
-        </a>
-        <a href="https://picsum.photos/900/1125?random=21" target="_blank" rel="noopener">
-            <img src="https://picsum.photos/900/1125?random=21" alt="Trail winding through rocks" loading="lazy">
-        </a>
-        <a href="https://picsum.photos/900/1125?random=22" target="_blank" rel="noopener">
-            <img src="https://picsum.photos/900/1125?random=22" alt="Campsite at dusk" loading="lazy">
-        </a>
-        <a href="https://picsum.photos/900/1125?random=23" target="_blank" rel="noopener">
-            <img src="https://picsum.photos/900/1125?random=23" alt="Close-up of alpine wildflowers" loading="lazy">
-        </a>
-        <a href="https://picsum.photos/900/1125?random=24" target="_blank" rel="noopener">
-            <img src="https://picsum.photos/900/1125?random=24" alt="Snow-capped summit against blue sky" loading="lazy">
-        </a>
-        <a href="https://picsum.photos/900/1125?random=25" target="_blank" rel="noopener">
-            <img src="https://picsum.photos/900/1125?random=25" alt="Frozen alpine stream" loading="lazy">
-        </a>
-        <a href="https://picsum.photos/900/1125?random=26" target="_blank" rel="noopener">
-            <img src="https://picsum.photos/900/1125?random=26" alt="Clouds rolling over a ridge" loading="lazy">
-        </a>
-    </div>
-</section>
-
-<footer>
-    <div class="foot-inner">
-        <span>© 2026 Adam Erlandsson</span>
-        <a href="#top">Back to top ↑</a>
-    </div>
-</footer>
-
+<script src="content.js"></script>
+<script src="site.js"></script>
 </body>
 </html>
