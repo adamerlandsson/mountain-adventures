@@ -21,9 +21,9 @@
 const SITE = {
   name:      "Adam Erlandsson",
   subtitle:  "Mountain Adventures",
-  blurb:     "A running log of summits, trails, and the sky above them.",
+  blurb:     "",
 
-  email:     "adamerlandsson1@gmail.com",
+  email:     "",
   instagram: "",        // e.g. "https://instagram.com/yourname"
   youtube:   "",        // e.g. "https://youtube.com/@yourname"
 };
