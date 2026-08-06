@@ -37,9 +37,9 @@ const SITE = {
    -------------------------------------------------------------------------- */
 const HEROES = {
   home: {
-    image: "wall-above-the-tarn.jpg",
+    image: "ski-touring.jpg",
     focus: "center",
-    alt:   "Granite walls rising above an alpine tarn",
+    alt:   "Mont Blanc",
   },
   trips: {
     image:   "tarn-and-snowfield.jpg",
